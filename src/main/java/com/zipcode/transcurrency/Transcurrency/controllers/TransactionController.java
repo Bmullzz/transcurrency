@@ -29,8 +29,8 @@ public class TransactionController {
 
     // GET ALL TRANSACTIONS
 
-    @RequestMapping(path = "/getAll", method = RequestMethod.GET)
-    public ResponseEntity<List<Transaction>> getAll() {
+    @RequestMapping(path = "/getAllTransactions", method = RequestMethod.GET)
+    public ResponseEntity<List<Transaction>> getAllTransactions() {
         LOG.info("getting all transactions");
         List<Transaction> transactions = transactionService.getAllTransactions();
 
@@ -45,7 +45,7 @@ public class TransactionController {
     // GET TRANSACTION BY ID
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public ResponseEntity<Transaction> get(@PathVariable("id") Long id) {
+    public ResponseEntity<Transaction> getTransactionById(@PathVariable("id") Long id) {
         LOG.info("getting transaction with id: {}", id);
         Transaction transaction = transactionService.getTransactionById(id);
 
@@ -59,8 +59,8 @@ public class TransactionController {
 
     // CREATE NEW TRANSACTION
 
-    @RequestMapping(path = "/create", method = RequestMethod.POST)
-    public ResponseEntity<Void> create(@RequestBody Transaction transaction, UriComponentsBuilder ucBuilder) {
+    @RequestMapping(path = "/createTransaction", method = RequestMethod.POST)
+    public ResponseEntity<Void> createTransaction(@RequestBody Transaction transaction, UriComponentsBuilder ucBuilder) {
         LOG.info("creating new transaction: {}", transaction);
 
         if(transactionService.exists(transaction)) {
@@ -75,10 +75,10 @@ public class TransactionController {
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
-    // UPDATE EXISTING PERSON
+    // UPDATE EXISTING TRANSACTION
 
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Transaction> update(@PathVariable Long id, @RequestBody Transaction transaction) {
+    public ResponseEntity<Transaction> updateTransaction(@PathVariable Long id, @RequestBody Transaction transaction) {
         LOG.info("updating transaction: {}", transaction);
         Transaction currentTransaction = new Transaction();
 
