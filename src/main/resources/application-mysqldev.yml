@@ -19,3 +19,5 @@ spring:
 #              action: create
 #              create-target: target_database_create.sql
 
+#above commented are for schema generation
+
