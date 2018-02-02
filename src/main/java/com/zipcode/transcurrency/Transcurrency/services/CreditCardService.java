@@ -21,6 +21,7 @@ public class CreditCardService {
     private CreditCardRepository creditCardRepository;
 
     public CreditCardService(CreditCardRepository creditCardRepository) {
+        logger.info("Committing creditCardRepository to memory.");
         this.creditCardRepository = creditCardRepository;
     }
 
