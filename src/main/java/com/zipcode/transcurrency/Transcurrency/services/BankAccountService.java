@@ -2,13 +2,12 @@ package com.zipcode.transcurrency.Transcurrency.services;
 
 import com.zipcode.transcurrency.Transcurrency.models.BankAccount;
 import com.zipcode.transcurrency.Transcurrency.repositories.BankAccountRepository;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.List;
 
 @Service
 public class BankAccountService {
-    private static final Logger logger = LogManager.getLogger(BankAccountService.class);
+    private static final Logger logger = LoggerFactory.getLogger(BankAccountService.class);
 
     private BankAccountRepository bankAccountRepository;
 
