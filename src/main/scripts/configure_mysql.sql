@@ -2,12 +2,7 @@
 #docker run --name mysqldbv1 -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -d mysql
 
 ##Persistency of data even after container is stoped and rerun
-#for mac
-#run docker container mysql while connected to a local directory (should be made prior,
-#/Users/yoobc/Desktop/projects/dockerdata/mysqldata) for persistency
-#docker run -p 27017:27017 -v /Users/yoobc/Desktop/projects/dockerdata/mysqldata:/var/lib/mysql -d mysql
 
-#for window10
 #create the volume first in docker folder instead of directory, which does not work in window
 #docker volume create --name=mysqldata
 #followed by
