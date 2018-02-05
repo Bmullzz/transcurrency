@@ -37,6 +37,7 @@ create table credit_card (credit_card_id bigint not null auto_increment, card_na
 create table user (id bigint not null auto_increment, balance decimal(19,2), name varchar(255), username varchar(255), primary key (id)) ENGINE=InnoDB;
 create table user_bank_account_list (user_id bigint not null, bank_account_list_bank_account_id bigint not null, primary key (user_id, bank_account_list_bank_account_id)) ENGINE=InnoDB;
 create table user_credit_card_list (user_id bigint not null, credit_card_list_credit_card_id bigint not null, primary key (user_id, credit_card_list_credit_card_id)) ENGINE=InnoDB;
+create table transaction (id bigint not null auto_increment, source_user_id bigint, destination_user_id bigint, amount bigint, source_user_account_id bigint, destination_user_account_id bigint, primary key (id)) ENGINE=InnoDB;
 alter table user_bank_account_list add constraint UK_soo8ob3oq2fmn2q5e89xpmp96 unique (bank_account_list_bank_account_id);
 alter table user_credit_card_list add constraint UK_ret4a5rl9ci94wm2lhqm4omtf unique (credit_card_list_credit_card_id);
 alter table bank_account add constraint FK92iik4jwhk7q385jubl2bc2mm foreign key (user_id) references user (id);
