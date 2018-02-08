@@ -70,13 +70,23 @@ public class TransactionServiceTests {
     @Test
     public void deleteTransactionByIdTest() throws Exception {
         Long id = 1L;
+
         doNothing().when(transactionRepository).delete(1L);
+
         transactionService.deleteTransactionById(id);
+        
         verify(transactionRepository, times(1)).delete(1L);
     }
 
     @Test
     public void updateTransactionTest() throws Exception {
+        Long id = 1L;
+        Transaction transaction = new Transaction(1L);
 
+        when(transactionRepository.save(transaction)).thenReturn(transaction);
+
+        transactionService.updateTransaction(transaction);
+
+        verify(transactionRepository, times(1)).save(transaction);
     }
 }
