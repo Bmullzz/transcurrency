@@ -82,8 +82,7 @@ public class TransactionController {
         LOG.info("updating transaction: {}", transaction);
         Transaction currentTransaction = transactionService.getTransactionById(id);
 
-        if (currentTransaction == null)
-        {
+        if (currentTransaction == null) {
             LOG.info("Transaction with id {} not found", id);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -98,7 +97,17 @@ public class TransactionController {
         return new ResponseEntity<>(currentTransaction, HttpStatus.OK);
     }
 
-    public ResponseEntity<Void> deleteTransaction(Long id) {
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteTransaction(@PathVariable("id") Long id) {
+        LOG.info("deleting transaction with id: {}", id);
+        Transaction transaction = transactionService.getTransactionById(id);
+
+        if (transaction == null) {
+            LOG.info("Unable to deleteTransaction. Transaction with id {} not found", id);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        transactionService.deleteTransactionById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
