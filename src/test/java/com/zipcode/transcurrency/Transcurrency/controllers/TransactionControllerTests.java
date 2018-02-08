@@ -173,7 +173,21 @@ public class TransactionControllerTests {
         verifyNoMoreInteractions(transactionService);
     }
 
-    
+    @Test
+    public void test_delete_transaction_success() throws Exception {
+        Transaction transaction = new Transaction(1L, 12L, 13L, 1234L, 12345L, 12346L);
+
+        when(transactionService.getTransactionById(transaction.getId())).thenReturn(transaction);
+        doNothing().when(transactionService).deleteTransactionById(transaction.getId());
+
+        mockMvc.perform(
+                delete("/transactions/{id}", transaction.getId()))
+                .andExpect(status().isOk());
+
+        verify(transactionService, times(1)).getTransactionById(transaction.getId());
+        verify(transactionService, times(1)).deleteTransactionById(transaction.getId());
+        verifyNoMoreInteractions(transactionService);
+    }
 
     public static String asJsonString(final Object obj) {
         try {

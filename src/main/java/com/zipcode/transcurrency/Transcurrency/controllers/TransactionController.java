@@ -98,6 +98,8 @@ public class TransactionController {
         return new ResponseEntity<>(currentTransaction, HttpStatus.OK);
     }
 
-
+    public ResponseEntity<Void> deleteTransaction(Long id) {
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 }
