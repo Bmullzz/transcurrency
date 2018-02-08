@@ -136,8 +136,10 @@ public class TransactionControllerTests {
         verifyNoMoreInteractions(transactionService);
     }
 
+    // UPDATE TRANSACTION
+
     @Test
-    public void test_update_person_success() throws Exception {
+    public void test_update_transaction_success() throws Exception {
         Transaction transaction = new Transaction(1L);
 
         when(transactionService.getTransactionById(transaction.getId())).thenReturn(transaction);
