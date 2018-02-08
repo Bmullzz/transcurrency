@@ -157,6 +157,24 @@ public class TransactionControllerTests {
 
     }
 
+    @Test
+    public void test_update_transaction_fail_404_not_found() throws Exception {
+        Transaction transaction = new Transaction(999L);
+
+        when(transactionService.getTransactionById(transaction.getId())).thenReturn(null);
+
+        mockMvc.perform(
+                put("/transactions/{id}", transaction.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(asJsonString(transaction)))
+                .andExpect(status().isNotFound());
+
+        verify(transactionService, times(1)).getTransactionById(transaction.getId());
+        verifyNoMoreInteractions(transactionService);
+    }
+
+    
+
     public static String asJsonString(final Object obj) {
         try {
             final ObjectMapper mapper = new ObjectMapper();
