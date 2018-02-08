@@ -74,7 +74,7 @@ public class TransactionServiceTests {
         doNothing().when(transactionRepository).delete(1L);
 
         transactionService.deleteTransactionById(id);
-        
+
         verify(transactionRepository, times(1)).delete(1L);
     }
 
