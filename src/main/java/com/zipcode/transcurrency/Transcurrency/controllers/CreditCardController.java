@@ -28,35 +28,35 @@ public class CreditCardController {
         this.creditCardService = creditCardService;
     }
 
-    //gets all the credit cards
+    //gets a list of all credit cards
     @RequestMapping(value = "/creditCards", method = RequestMethod.GET)
     public ResponseEntity<List<CreditCard>> getAllCreditCards() {
         LOG.info("gets all the credit cards");
         return new ResponseEntity<>(creditCardService.getAllCreditCards(), HttpStatus.OK);
     }
 
-    //creates credit cards
+    //creates a credit card object
     @RequestMapping(value = "/creditCards", method = RequestMethod.POST)
     public ResponseEntity<?> createCreditCard(@RequestBody CreditCard creditCard) {
         LOG.info("creates credit cards");
         return new ResponseEntity<>(null, creditCardService.createCreditCard(creditCard), HttpStatus.CREATED);
     }
 
-    //gets a credit card
+    //gets a single credit card object by id
     @RequestMapping(value = "/creditCards/{creditCardId}", method = RequestMethod.GET)
     public ResponseEntity<?> getCreditCard(@PathVariable Long creditCardId) {
         LOG.info("gets a credit card");
         return new ResponseEntity<>(creditCardService.getCreditCard(creditCardId), HttpStatus.OK);
     }
 
-    //update a credit card. May not be needed
+    //updates a credit card
     @RequestMapping(value = "/creditCards/{creditCardId}", method = RequestMethod.PUT)
     public ResponseEntity<?> updateCreditCard(@RequestBody CreditCard creditCard, @PathVariable Long creditCardId) {
         LOG.info("update a credit card.");
         return new ResponseEntity<>(creditCardService.updateCreditCard(creditCard, creditCardId), HttpStatus.OK);
     }
 
-    //delete a credit card
+    //deletes a credit card
     @RequestMapping(value = "/creditCards/{creditCardId}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteCreditCard(@PathVariable Long creditCardId) {
         LOG.info("delete a credit card");
