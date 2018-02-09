@@ -2,23 +2,23 @@
 * Transcurrency is Money Transfer app modeled after Venmo.  This app will allow you to send money to and from your friends.
 
 ##Contributors
-* AJ Fletcher
-* Brian Mullin
-* Byung-Chun Yoo
-* Paul Watson
+- AJ Fletcher
+- Brian Mullin
+- Byung-Chun Yoo
+- Paul Watson
 
 ##Technology
-* Front-End
-    * Angular 5
-    * Ionic Framework
-* Middleware
-    * SpringBoot
-    * JPA Repositories
-    * MVC Design Patterns
-* Back-End
-    * H2 database
-    * MySQL database
-    * Docker Containers
+- Front-End
+    - Angular 5
+    - Ionic Framework
+- Middleware
+    - SpringBoot
+    - JPA Repositories
+    - MVC Design Patterns
+- Back-End
+    - H2 database
+    - MySQL database
+    - Docker Containers
 
 ##User Stories
 
