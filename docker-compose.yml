@@ -1,0 +1,39 @@
+version: '3.5'
+services:
+  tc-war:
+    build:
+      context: .
+      # dockerfile: Dockerfile #Dockerfile-transcurrency ... change name
+    links:
+      - tc-tomcat
+    volumes:
+      - ./classes/artifacts/Transcurrency_war_exploded:/usr/local/conf/Transcurrency_war_exploded
+      - type: bind
+        source: ./classes/example1/logs/logback
+        target: /usr/local/example1/logs/logback
+    ports:
+      - "8085:8000"
+  tc-tomcat:
+    image: tomcat:9.0.4-jre9
+    build: .
+    volumes:
+      - type: bind
+        source: ./classes/artifacts/Transcurrency_war_exploded
+        target: /usr/local/conf/Transcurrency_war_exploded
+      - type: bind
+        source: ./classes/example2/logs/logback
+        target: /usr/local/example2/logs/logback
+    ports:
+      - "8090:8080"
+  tc-data:
+    image: mysql:5.7.21
+    build: .
+    volumes:
+      - type: bind
+        source: ./target/classes/application-mysqldev.yml
+        target: /usr/local/example3/data/application-mysqldev.yml
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD:
+    ports:
+      - "3306:3366"
