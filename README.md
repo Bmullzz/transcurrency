@@ -1,5 +1,5 @@
 # Transcurrency
-* Transcurrency is Money Transfer app modeled after Venmo.  This app will allow you to send money to and from your friends.
+* Transcurrency is Money Transfer app modeled after Venmo. You can send money to the app using a bank account or credit card. Once you have added money to your Transcurrency account, you will be able to exchange money with other Users.  You will also be able to withdraw money from the app to a bank account.
 
 ## Contributors
 - AJ Fletcher
