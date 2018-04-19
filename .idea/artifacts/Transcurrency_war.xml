@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Transcurrency:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="Transcurrency-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Transcurrency:war exploded" />
+    </root>
+  </artifact>
+</component>
