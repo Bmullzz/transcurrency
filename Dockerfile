@@ -159,3 +159,23 @@ RUN set -e \
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
+
+
+# FROM openjdk
+# COPY . /usr/src/tcwork
+# WORKDIR /usr/src/tcwork
+# EXPOSE 8080
+# RUN javac ./src/main/java/com/zipcode/transcurrency/Transcurrency/TranscurrencyApplication.java
+#CMD ["mvn", "spring-boot:run"]
+# CMD ["java", "-cp", "./com.zipcode.transcurrency.Transcurrency.TranscurrencyApplication.java"]
+
+
+# RUN javac TranscurrencyApplication.java
+# CMD ["java", "TranscurrencyApplication"]
+# RUN ["mvn", "spring-boot"]
+
+# RUN apk add --no-cache openjdk
+# COPY . /usr/local/tomcat/tcwork
+# EXPOSE 80
+# WORKDIR /usr/local/tomcat/tcwork
+# CMD ["java", "TranscurrencyApplication.java" ]

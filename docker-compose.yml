@@ -1,24 +1,33 @@
-version: '3.5'
+version: '3.6'
+
 services:
   tc-tomcat:
-    image: tomcat:9.0.4-jre9
-    build: .
+    build:
+     context: .
+     dockerfile: Dockerfile
     ports:
-      - "8090:8080"
+      - "8080:8080"
+
     volumes:
-      - ./classes/artifacts/Transcurrency_war_exploded:/usr/local/tomcat/conf/Transcurrency_war_exploded
       - type: bind
-        source: ./logback
-        target: /usr/local/tomcat/logs
+        source: ./artifacts/tcweb.war
+        target: /usr/local/tomcat/webapps
+    restart: on-failure
+
   tc-data:
-    image: mysql:5.7.21
-    build: .
+    image: mysql
+
     volumes:
       - type: bind
-        source: ./target/classes/application-mysqldev.yml
+        source: ./src/main/resources/application-mysqldev.yml
         target: /usr/local/data/application-mysqldev.yml
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: transcurrencymysql_dev_user
+      MYSQL_PASSWORD: yoo
+    depends_on:
+      - tc-tomcat
     ports:
-      - "3306:3366"
+      - "3306"
+

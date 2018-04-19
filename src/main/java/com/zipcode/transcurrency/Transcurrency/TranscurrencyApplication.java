@@ -42,6 +42,8 @@ public class TranscurrencyApplication extends WebSecurityConfigurerAdapter {
 		http.exceptionHandling().accessDeniedPage("/403");
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
+
+		//http.servletApi().
 	}
 
 	public static void main(String[] args) {
@@ -51,4 +53,5 @@ public class TranscurrencyApplication extends WebSecurityConfigurerAdapter {
 		logger.debug("This is a debug log.");
 		SpringApplication.run(TranscurrencyApplication.class, args);
 	}
+
 }
